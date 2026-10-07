@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MIR CAFE | Grand Opening</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #fff4df, #ffe0c2);
+    color: #3b2115;
+    overflow-x: hidden;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+    min-height: 100vh;
+    text-align: center;
+    padding: 70px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.logo {
+    font-size: 4rem;
+    font-weight: 900;
+    letter-spacing: 5px;
+    color: #7b2d1d;
+    text-shadow: 3px 3px #ffd18b;
+}
+
+.tagline {
+    font-size: 1.4rem;
+    margin: 10px 0 25px;
+}
+
+.opening-date {
+    display: inline-block;
+    background: #7b2d1d;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+/* ================= OFFER ================= */
+
+.offer {
+    margin: 35px auto;
+    max-width: 700px;
+    background: white;
+    border: 5px dashed #e85d04;
+    border-radius: 25px;
+    padding: 30px;
+    box-shadow: 0 10px 30px #0002;
+}
+
+.offer h2 {
+    font-size: 3rem;
+    color: #e85d04;
+}
+
+.offer p {
+    font-size: 1.3rem;
+    margin-top: 10px;
+}
+
+/* ================= DOOR ================= */
+
+.door-area {
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.door {
+    width: 180px;
+    height: 230px;
+    background: #632d1a;
+    border: 8px solid #32150c;
+    position: relative;
+    transition: transform 2s ease;
+    transform-origin: left;
+}
+
+.door::after {
+    content: "🚪";
+    position: absolute;
+    font-size: 70px;
+    top: 75px;
+    left: 50px;
+}
+
+.door.open {
+    transform: perspective(700px) rotateY(-100deg);
+}
+
+.open-btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    background: #e85d04;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 15px #0003;
+}
+
+.open-btn:hover {
+    transform: scale(1.05);
+}
+
+/* ================= RIBBON ================= */
+
+.ribbon-area {
+    margin: 30px auto;
+}
+
+.ribbon {
+    width: 330px;
+    height: 30px;
+    background: #d62828;
+    margin: 20px auto;
+    position: relative;
+}
+
+.ribbon::before,
+.ribbon::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 30px;
+    height: 45px;
+    background: #b51e1e;
+}
+
+.ribbon::before {
+    left: 0;
+}
+
+.ribbon::after {
+    right: 0;
+}
+
+.scissors {
+    font-size: 55px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.scissors:hover {
+    transform: scale(1.2) rotate(-10deg);
+}
+
+.cut {
+    animation: ribbonCut 1s forwards;
+}
+
+@keyframes ribbonCut {
+    to {
+        transform: scaleX(0);
+        opacity: 0;
+    }
+}
+
+.celebrate-btn {
+    background: #7b2d1d;
+    color: white;
+    border: none;
+    padding: 14px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+/* ================= MENU ================= */
+
+.menu-section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.menu-section h2 {
+    font-size: 2.7rem;
+    margin-bottom: 30px;
+}
+
+.menu {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 25px 15px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px #0002;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+.food-icon {
+    font-size: 3rem;
+}
+
+.card h3 {
+    margin: 12px 0;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.new-price {
+    color: #e85d04;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.discount {
+    margin-top: 8px;
+    display: inline-block;
+    background: #2a9d8f;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: .85rem;
+}
+
+/* ================= BALLOONS ================= */
+
+.balloon {
+    position: fixed;
+    bottom: -100px;
+    font-size: 50px;
+    animation: balloonUp 8s linear infinite;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.b1 { left: 5%; animation-delay: 1s; }
+.b2 { left: 20%; animation-delay: 3s; }
+.b3 { left: 75%; animation-delay: 2s; }
+.b4 { left: 90%; animation-delay: 5s; }
+
+@keyframes balloonUp {
+    from {
+        transform: translateY(0) rotate(0deg);
+    }
+    to {
+        transform: translateY(-120vh) rotate(20deg);
+    }
+}
+
+/* ================= HEARTS ================= */
+
+.heart {
+    position: fixed;
+    bottom: -50px;
+    font-size: 25px;
+    animation: heartUp 6s linear infinite;
+    pointer-events: none;
+    z-index: 4;
+}
+
+@keyframes heartUp {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-110vh) scale(1.8);
+        opacity: 0;
+    }
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+    text-align: center;
+    background: #3b2115;
+    color: white;
+    padding: 30px;
+}
+
+footer strong {
+    color: #ffd166;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:600px) {
+    .logo {
+        font-size: 2.7rem;
+    }
+
+    .offer h2 {
+        font-size: 2.3rem;
+    }
+
+    .menu-section h2 {
+        font-size: 2rem;
+    }
+
+    .door {
+        width: 140px;
+        height: 190px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- BALLOONS -->
+<div class="balloon b1">🎈</div>
+<div class="balloon b2">🎈</div>
+<div class="balloon b3">🎈</div>
+<div class="balloon b4">🎈</div>
+
+<!-- HERO -->
+<section class="hero">
+
+    <div class="logo">☕ MIR CAFE</div>
+
+    <p class="tagline">
+        Where Every Sip & Bite Becomes a Celebration!
+    </p>
+
+    <div class="opening-date">
+        🎉 GRAND OPENING — SEPTEMBER 25, 2026 🎉
+    </div>
+
+    <div class="offer">
+        <h2>🔥 70% OFF 🔥</h2>
+        <p>ON EVERY MENU ITEM!</p>
+        <p>Come celebrate the grand opening of MIR CAFE ❤️</p>
+    </div>
+
+    <!-- DOOR -->
+    <div class="door-area">
+        <div class="door" id="door"></div>
+    </div>
+
+    <button class="open-btn" onclick="openDoor()">
+        🚪 OPEN MIR CAFE
+    </button>
+
+    <!-- RIBBON -->
+    <div class="ribbon-area">
+
+        <h2 style="margin-top:35px;">
+            🎀 GRAND OPENING RIBBON CUTTING 🎀
+        </h2>
+
+        <div class="ribbon" id="ribbon"></div>
+
+        <div class="scissors" onclick="cutRibbon()">
+            ✂️
+        </div>
+
+        <button class="celebrate-btn" onclick="celebrate()">
+            🎉 CELEBRATE!
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- MENU -->
+<section class="menu-section">
+
+<h2>🍽️ MIR CAFE SPECIAL MENU</h2>
+
+<div class="menu">
+
+    <div class="card">
+        <div class="food-icon">☕</div>
+        <h3>Coffee</h3>
+        <p class="old-price">Rs. 150</p>
+        <p class="new-price">Rs. 45</p>
+        <span class="discount">70% OFF</span>
+    </div>
+
+    <div class="card">
+        <div class="food-icon">🍵</div>
+        <h3>Tea</h3>
+        <p class="old-price">Rs. 100</p>
+        <p class="new-price">Rs. 30</p>
+        <span class="discount">70% OFF</span>
+    </div>
+
+    <div class="card">
+        <div class="food-icon">🥙</div>
+        <h3>Saurma</h3>
+        <p class="old-price">Rs. 250</p>
+        <p class="new-price">Rs. 75</p>
+        <span class="discount">70% OFF</span>
+    </div>
+
+    <div class="card">
+        <div class="food-icon">🥤</div>
+        <h3>Cold Coffee</h3>
+        <p class="old-price">Rs. 220</p>
+        <p class="new-price">Rs. 66</p>
+        <span class="discount">70% OFF</span>
+    </div>
+
+    <div class="card">
+        <div class="food-icon">🍜</div>
+        <h3>Chaumin</h3>
+        <p class="old-price">Rs. 200</p>
+        <p class="new-price">Rs. 60</p>
+        <span class="discount">70% OFF</span>
+    </div>
+
+    <div class="card">
+        <div class="food-icon">🥟</div>
+        <h3>Momo</h3>
+        <p class="old-price">Rs. 180</p>
+        <p class="new-price">Rs. 54</p>
+        <span class="discount">70% OFF</span>
+    </div>
+
+    <div class="card">
+        <div class="food-icon">🥟</div>
+        <h3>Buff Momo</h3>
+        <p class="old-price">Rs. 220</p>
+        <p class="new-price">Rs. 66</p>
+        <span class="discount">70% OFF</span>
+    </div>
+
+    <div class="card">
+        <div class="food-icon">🍕</div>
+        <h3>Pizza</h3>
+        <p class="old-price">Rs. 400</p>
+        <p class="new-price">Rs. 120</p>
+        <span class="discount">70% OFF</span>
+    </div>
+
+    <div class="card">
+        <div class="food-icon">☕</div>
+        <h3>Cappuccino</h3>
+        <p class="old-price">Rs. 250</p>
+        <p class="new-price">Rs. 75</p>
+        <span class="discount">70% OFF</span>
+    </div>
+
+    <div class="card">
+        <div class="food-icon">🍟</div>
+        <h3>French Fries</h3>
+        <p class="old-price">Rs. 180</p>
+        <p class="new-price">Rs. 54</p>
+        <span class="discount">70% OFF</span>
+    </div>
+
+</div>
+
+</section>
+
+
+<footer>
+    <h2>❤️ Welcome to MIR CAFE ❤️</h2>
+    <p>Grand Opening: <strong>September 25, 2026</strong></p>
+    <p>🎉 70% OFF ON EVERY ITEM 🎉</p>
+</footer>
+
+
+<script>
+
+/* OPEN DOOR */
+function openDoor() {
+    document.getElementById("door").classList.add("open");
+
+    createHearts();
+    createConfetti();
+}
+
+
+/* CUT RIBBON */
+function cutRibbon() {
+
+    const ribbon = document.getElementById("ribbon");
+
+    ribbon.classList.add("cut");
+
+    createHearts();
+    createConfetti();
+
+    setTimeout(() => {
+        alert("🎉 Congratulations! MIR CAFE is officially OPEN! 🎉");
+    }, 500);
+}
+
+
+/* CELEBRATION */
+function celebrate() {
+
+    createHearts();
+    createConfetti();
+
+    alert(
+        "🎉🎉 WELCOME TO MIR CAFE! 🎉🎉\n\n" +
+        "Grand Opening: September 25, 2026\n" +
+        "🔥 70% OFF EVERY ITEM 🔥"
+    );
+}
+
+
+/* FLOATING HEARTS */
+function createHearts() {
+
+    for(let i = 0; i < 20; i++) {
+
+        const heart = document.createElement("div");
+
+        heart.className = "heart";
+
+        heart.innerHTML = Math.random() > 0.5 ? "❤️" : "💖";
+
+        heart.style.left = Math.random() * 100 + "%";
+
+        heart.style.animationDuration =
+            (3 + Math.random() * 4) + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 7000);
+    }
+}
+
+
+/* CONFETTI */
+function createConfetti() {
+
+    const symbols = ["🎉", "✨", "🎊", "❤️", "⭐"];
+
+    for(let i = 0; i < 35; i++) {
+
+        const confetti = document.createElement("div");
+
+        confetti.innerHTML =
+            symbols[Math.floor(Math.random() * symbols.length)];
+
+        confetti.style.position = "fixed";
+        confetti.style.left = Math.random() * 100 + "%";
+        confetti.style.top = "-30px";
+        confetti.style.fontSize =
+            (15 + Math.random() * 20) + "px";
+        confetti.style.zIndex = "9999";
+        confetti.style.pointerEvents = "none";
+
+        document.body.appendChild(confetti);
+
+        const animation = confetti.animate(
+            [
+                {
+                    transform: "translateY(0) rotate(0deg)",
+                    opacity: 1
+                },
+                {
+                    transform:
+                        "translateY(110vh) rotate(720deg)",
+                    opacity: 0
+                }
+            ],
+            {
+                duration: 2500 + Math.random() * 2500,
+                easing: "ease-out"
+            }
+        );
+
+        animation.onfinish = () => confetti.remove();
+    }
+}
+
+</script>
+
+</body>
+</html>
